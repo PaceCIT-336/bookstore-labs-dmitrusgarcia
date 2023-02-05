@@ -3,3 +3,5 @@
 template for cit336 labs
 
 php, mysql, javascript project
+
+Dmitrus Garcia
