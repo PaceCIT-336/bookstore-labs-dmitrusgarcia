@@ -118,7 +118,7 @@
             Total: $<?php echo $_SESSION["total"]; ?>
         </p>
         <form id="checkoutform" name="checkoutform" action="checkout.php" method="POST">
-            <input type="hidden" name="cart" id="cartInput" value="<?php echo implode("|", $_SESSION["items"]); ?>">
+            <input type="hidden" name="cart" id="cartInput" value="<?php echo join("|", $_SESSION["items"]); ?>">
             <input type="hidden" name="total" id="totalInput" value="<?php echo $_SESSION["total"]; ?>">
             <button id="checkout">Checkout</button>
         </form>
