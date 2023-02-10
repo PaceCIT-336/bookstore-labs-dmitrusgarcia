@@ -7,21 +7,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="assets/styles.css">
     <?php session_start();
-    include_once("cart.php"); ?>
+    include_once("cart.php"); 
+    include_once("books.php"); ?>
 </head>
 
 <body>
     <header>
         <h1><a href="index.php">Rainy Bookstore</a></h1>
     </header>
+    
     <main class="container shop">
         <div class="container">
         <section class="tile">
-            <img src="assets/imgs/learningphp.jpg">
-            <h3>Learning PHP, MySQL & JavaScript</h3>
-            <p>Robin Nixon.<br>
-                A step-by-step guide to creating dynamic websites.</p>
-            <p>$60</p>
+            <?php
+            $books_array = array();
+  
+            $book1 = new Book("Learning PHP, MySQL & JavaScript", "Robin Nixon", "A step-by-step guide to creating dynamic websites.", "assets/imgs/learningphp.jpg", "60");
+            array_push($books_array, $book1);
+
+            $counter = 0;
+            foreach ($books_array as $book) {
+                if ($counter == 0) {
+                    echo '<img src="' . $book->imageLocation . '">';
+                    echo '<h3>' . $book->title . '</h3>';
+                    echo '<p>' . $book->author . '<br>' . $book->blurb . '</p>';
+                    echo '<p>$' . $book->price . '</p>';
+                }
+                $counter++;
+            }
+            ?>
             <form name="phpbookform" id="phpbookform" action="" method="POST">
                 <input type="hidden" name="title" value="Learning PHP, MySQL & JavaScript">
                 <input type="hidden" name="price" value="60">
@@ -29,11 +43,21 @@
             </form>
         </section>
         <section class="tile">
-            <img src="assets/imgs/learningpython.jpg">
-            <h3>Learning Python</h3>
-            <p>Mark Lutz.<br>
-                Powerful Object-Oriented Programming</p>
-            <p>$49</p>
+            <?php
+            $book2 = new Book("Learning Python", "Mark Lutz", "Powerful Object-Oriented Programming", "assets/imgs/learningpython.jpg", "49");
+            array_push($books_array, $book2);
+            
+            $counter = 0;
+            foreach ($books_array as $book) {
+                if ($counter == 1) {
+                    echo '<img src="' . $book->imageLocation . '">';
+                    echo '<h3>' . $book->title . '</h3>';
+                    echo '<p>' . $book->author . '<br>' . $book->blurb . '</p>';
+                    echo '<p>$' . $book->price . '</p>';
+                }
+                $counter++;
+            }
+            ?>
             <form name="pybookform" id="pybookform" action="" method="POST">
                 <input type="hidden" name="title" value="Learning Python">
                 <input type="hidden" name="price" value="49">
@@ -41,11 +65,21 @@
             </form>
         </section>
         <section class="tile">
-            <img src="assets/imgs/htmlcss.jpg">
-            <h3>HTML & CSS 9th Ed</h3>
-            <p>Joe Casabona.<br>
-                Design and build webpages</p>
-            <p>$35</p>
+            <?php
+            $book3 = new Book("HTML & CSS 9th Ed", "Joe Casabon", "Design and build webpages", "assets/imgs/htmlcss.jpg", "35");
+            array_push($books_array, $book3);
+            
+            $counter = 0;
+            foreach ($books_array as $book) {
+                if ($counter == 2) {
+                    echo '<img src="' . $book->imageLocation . '">';
+                    echo '<h3>' . $book->title . '</h3>';
+                    echo '<p>' . $book->author . '<br>' . $book->blurb . '</p>';
+                    echo '<p>$' . $book->price . '</p>';
+                }
+                $counter++;
+            }
+            ?>
             <form name="htmlbookform" id="htmlbookform" action="" method="POST">
                 <input type="hidden" name="title" value="HTML & CSS 9th Ed">
                 <input type="hidden" name="price" value="35">
@@ -53,10 +87,23 @@
             </form>
         </section>
         <section class="tile">
-            <img src="assets/imgs/dictionary.jpg">
-            <h3>American Heritage Dictionary</h3>
-            <p>The English Language.</p>
-            <p>$55</p>
+            <?php
+            $book4 = new Book("American Heritage Dictionary", "", "The English Language.", "assets/imgs/dictionary.jpg", "55");
+            array_push($books_array, $book4);
+            
+            $counter = 0;
+            foreach ($books_array as $book) {
+                if ($counter == 3) {
+                    echo '<img src="' . $book->imageLocation . '">';
+                    echo '<h3>' . $book->title . '</h3>';
+                    echo '<p>' . $book->author . '<br>' . $book->blurb . '</p>';
+                    echo '<p>$' . $book->price . '</p>';
+                }
+                $counter++;
+            }
+
+            #print_r($books_array)
+            ?>
             <form name="dictbookform" id="dictbookform" action="" method="POST">
                 <input type="hidden" name="title" value="American Heritage Dictionary">
                 <input type="hidden" name="price" value="55">
@@ -81,5 +128,4 @@
     </aside>
     </main>
 </body>
-
 </html>
