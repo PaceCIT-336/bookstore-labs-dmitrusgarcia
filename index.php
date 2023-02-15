@@ -20,16 +20,14 @@
         <div class="container">
         <section class="tile">
             <?php
-            $counter = 0;
-            foreach ($books as $book) {
-                if ($counter == 0) {
+            $id = 1;
+            $book = $books[$id];
                     echo '<img src="' . $book->imageLocation . '" alt="' . $book->title . '">';
                     echo '<h3>' . $book->title . '</h3>';
                     echo '<p>' . $book->author . '<br>' . $book->blurb . '</p>';
                     echo '<p>$' . $book->price . '</p>';
-                }
-                $counter++;
-            }
+            
+                    $id++;    
             ?>
             <form name="phpbookform" id="phpbookform" action="" method="POST">
                 <input type="hidden" name="title" value="Learning PHP, MySQL & JavaScript">
@@ -39,16 +37,13 @@
         </section>
         <section class="tile">
             <?php
-            $counter = 0;
-            foreach ($books as $book) {
-                if ($counter == 0) {
+            $book = $books[$id];
                     echo '<img src="' . $book->imageLocation . '" alt="' . $book->title . '">';
                     echo '<h3>' . $book->title . '</h3>';
                     echo '<p>' . $book->author . '<br>' . $book->blurb . '</p>';
                     echo '<p>$' . $book->price . '</p>';
-                }
-                $counter++;
-            }
+
+                    $id++;  
             ?>
             <form name="pybookform" id="pybookform" action="" method="POST">
                 <input type="hidden" name="title" value="Learning Python">
@@ -58,16 +53,13 @@
         </section>
         <section class="tile">
             <?php
-            $counter = 0;
-            foreach ($books as $book) {
-                if ($counter == 0) {
+            $book = $books[$id];
                     echo '<img src="' . $book->imageLocation . '" alt="' . $book->title . '">';
                     echo '<h3>' . $book->title . '</h3>';
                     echo '<p>' . $book->author . '<br>' . $book->blurb . '</p>';
                     echo '<p>$' . $book->price . '</p>';
-                }
-                $counter++;
-            }
+
+                    $id++;  
             ?>
             <form name="htmlbookform" id="htmlbookform" action="" method="POST">
                 <input type="hidden" name="title" value="HTML & CSS 9th Ed">
@@ -77,16 +69,11 @@
         </section>
         <section class="tile">
             <?php
-            $counter = 0;
-            foreach ($books as $book) {
-                if ($counter == 0) {
+            $book = $books[$id];
                     echo '<img src="' . $book->imageLocation . '" alt="' . $book->title . '">';
                     echo '<h3>' . $book->title . '</h3>';
                     echo '<p>' . $book->author . '<br>' . $book->blurb . '</p>';
                     echo '<p>$' . $book->price . '</p>';
-                }
-                $counter++;
-            }
 
             #print_r($books)
             ?>
