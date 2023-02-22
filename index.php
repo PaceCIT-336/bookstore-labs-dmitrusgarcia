@@ -18,71 +18,23 @@
     
     <main class="container shop">
         <div class="container">
-        <section class="tile">
-            <?php
-            $id = 1;
-            $book = $books[$id];
-                    echo '<img src="' . $book->imageLocation . '" alt="' . $book->title . '">';
-                    echo '<h3>' . $book->title . '</h3>';
-                    echo '<p>' . $book->author . '<br>' . $book->blurb . '</p>';
-                    echo '<p>$' . $book->price . '</p>';
-            
-                    $id++;    
-            ?>
-            <form name="phpbookform" id="phpbookform" action="" method="POST">
-                <input type="hidden" name="title" value="Learning PHP, MySQL & JavaScript">
-                <input type="hidden" name="price" value="60">
-                <button type="submit">Add to Cart</button>
-            </form>
-        </section>
-        <section class="tile">
-            <?php
-            $book = $books[$id];
-                    echo '<img src="' . $book->imageLocation . '" alt="' . $book->title . '">';
-                    echo '<h3>' . $book->title . '</h3>';
-                    echo '<p>' . $book->author . '<br>' . $book->blurb . '</p>';
-                    echo '<p>$' . $book->price . '</p>';
+        <?php
+            foreach ($books as $book) {
+                echo '<section class="tile">';
+                echo '<img src="' . $book->imageLocation . '" alt="' . $book->title . '">';
+                echo '<h3>' . $book->title . '</h3>';
+                echo '<p>' . $book->author . '<br>' . $book->blurb . '</p>';
+                echo '<p>$' . $book->price . '</p>';
 
-                    $id++;  
-            ?>
-            <form name="pybookform" id="pybookform" action="" method="POST">
-                <input type="hidden" name="title" value="Learning Python">
-                <input type="hidden" name="price" value="49">
-                <button type="submit">Add to Cart</button>
-            </form>
-        </section>
-        <section class="tile">
-            <?php
-            $book = $books[$id];
-                    echo '<img src="' . $book->imageLocation . '" alt="' . $book->title . '">';
-                    echo '<h3>' . $book->title . '</h3>';
-                    echo '<p>' . $book->author . '<br>' . $book->blurb . '</p>';
-                    echo '<p>$' . $book->price . '</p>';
-
-                    $id++;  
-            ?>
-            <form name="htmlbookform" id="htmlbookform" action="" method="POST">
-                <input type="hidden" name="title" value="HTML & CSS 9th Ed">
-                <input type="hidden" name="price" value="35">
-                <button type="submit">Add to Cart</button>
-            </form>
-        </section>
-        <section class="tile">
-            <?php
-            $book = $books[$id];
-                    echo '<img src="' . $book->imageLocation . '" alt="' . $book->title . '">';
-                    echo '<h3>' . $book->title . '</h3>';
-                    echo '<p>' . $book->author . '<br>' . $book->blurb . '</p>';
-                    echo '<p>$' . $book->price . '</p>';
-
+                echo '<form name="phpbookform" id="phpbookform" action="" method="POST">';
+                echo '<input type="hidden" name="title" value="' . $book->title . '">';
+                echo '<input type="hidden" name="price" value="' . $book->price . '">';
+                echo '<button type="submit">Add to Cart</button>';
+                echo '</form>';
+                echo '</section>';
+            }
             #print_r($books)
-            ?>
-            <form name="dictbookform" id="dictbookform" action="" method="POST">
-                <input type="hidden" name="title" value="American Heritage Dictionary">
-                <input type="hidden" name="price" value="55">
-                <button type="submit">Add to Cart</button>
-            </form>
-        </section>
+        ?>
     </div>
     <aside id="cart">
         <img src="assets/imgs/cart.png">
