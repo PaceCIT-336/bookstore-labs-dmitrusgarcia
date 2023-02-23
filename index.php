@@ -19,22 +19,22 @@
     <main class="container shop">
         <div class="container">
         <?php
-            foreach ($books as $book) {
+            foreach ($books as $id => $book) {
                 echo '<section class="tile">';
                 echo '<img src="' . $book->imageLocation . '" alt="' . $book->title . '">';
                 echo '<h3>' . $book->title . '</h3>';
                 echo '<p>' . $book->author . '<br>' . $book->blurb . '</p>';
                 echo '<p>$' . $book->price . '</p>';
-
-                echo '<form name="phpbookform" id="phpbookform" action="" method="POST">';
+                echo '<form name="phpbookform" id="phpbookform' . $id . '" action="" method="POST">';
                 echo '<input type="hidden" name="title" value="' . $book->title . '">';
                 echo '<input type="hidden" name="price" value="' . $book->price . '">';
                 echo '<button type="submit">Add to Cart</button>';
                 echo '</form>';
+                echo '<br><a href="book_reviews.php?id=' . $id . '"><button>See Reviews</button></a>';
                 echo '</section>';
-            }
-            #print_r($books)
+            }    
         ?>
+
     </div>
     <aside id="cart">
         <img src="assets/imgs/cart.png">

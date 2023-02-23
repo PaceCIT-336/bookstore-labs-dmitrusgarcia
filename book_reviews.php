@@ -12,18 +12,39 @@
     require_once("books.php"); ?>
 </head>
 
+<?php
+            $id = $_GET['id'];
+            $title = "";
+            $query = "SELECT title FROM books WHERE BookID = :id";
+            $stmt = $pdo->prepare($query);
+            $stmt->execute(['id' => $id]);
+            $row = $stmt->fetch();
+            if ($row) {
+                $title = $row['title'];
+            }
+            
+            $query = "SELECT rating, review FROM reviews WHERE BookID = :id";
+            $stmt = $pdo->prepare($query);
+            $stmt->execute(['id' => $id]);
+            $results = $stmt->fetchAll();
+?>
+
 <body>
     <header>
         <h1>Rainy Bookstore</h1>
     </header>
     <main class="container shop">
         <div>
-            <h2>Book Reviews</h2>
-        <?php //include your code here
-            
+            <h2><?php echo $title; ?> Reviews</h2>
 
-
-        ?>
+            <?php if ($results) {
+                foreach ($results as $row) {
+                    echo "<p><strong>Rating:</strong> " . $row['rating'] . "<br>";
+                    echo "<strong>Review:</strong> " . $row['review'] . "</p>";
+                }
+            } else {
+                echo "<p>No reviews found for this book.</p>";
+            } ?>
 		<a href="index.php"><button>Back</button></a>
        </div>
     <aside id="cart">
