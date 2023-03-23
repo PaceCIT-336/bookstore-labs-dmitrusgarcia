@@ -16,7 +16,7 @@ if (!isset($_POST['submit'])) {
 
         $BookID = sanitizeString($_POST['book']);
         $Rating = sanitizeString($_POST['rating']);
-        $ReviewText = sanitizeString($_POST['review']);
+        $ReviewText = $_POST['review'] !== '' ? sanitizeString($_POST['review']) : null;
 
         $stmt = $pdo->prepare("INSERT INTO reviews (BookID, Rating, Review) VALUES (?, ?, ?)");
         $stmt->bindParam(1, $BookID, PDO::PARAM_INT);
