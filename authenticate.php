@@ -17,8 +17,7 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
   $password = sanitizeString($_POST['password']);
 
   $query = $pdo->prepare("SELECT CustomerID, FirstName, LastName, Password FROM Customers WHERE Email = ?");
-  $query->bindParam(1, $email, PDO::PARAM_STR);
-  $query->execute();
+  $query->execute([$email]);
   $user = $query->fetch();
 
   if ($user) {
