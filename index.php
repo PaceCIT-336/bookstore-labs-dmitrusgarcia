@@ -14,6 +14,14 @@
 <body>
     <header>
         <h1><a href="index.php">Rainy Bookstore</a></h1>
+        <?php 
+			if(isset($_SESSION['id'])) {
+				echo "<p>Welcome, " . $_SESSION['name'] . "!</p>";
+				echo "<a href=\"logout.php\"><button>Log Out</button></a>";
+			} else {
+				echo "<a href=\"authenticate.php\"><button>Log In</button></a>";
+			}
+		?>
     </header>
     
     <main class="container shop">

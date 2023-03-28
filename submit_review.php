@@ -8,6 +8,7 @@ function sanitizeString($var) {
     return $var;
 }
 
+session_start();
 if (!isset($_POST['submit'])) {
     header("Location: review.php");
     exit();
@@ -18,10 +19,18 @@ if (!isset($_POST['submit'])) {
         $Rating = sanitizeString($_POST['rating']);
         $ReviewText = $_POST['review'] !== '' ? sanitizeString($_POST['review']) : null;
 
-        $stmt = $pdo->prepare("INSERT INTO reviews (BookID, Rating, Review) VALUES (?, ?, ?)");
+        $stmt = $pdo->prepare("INSERT INTO reviews (BookID, Rating, Review, CustomerID) VALUES (?, ?, ?, ?)");
+
+        if (isset($_SESSION['id'])) {
+            $id = $_SESSION['id'];
+        } else {
+            $id = null;
+        }
+
         $stmt->bindParam(1, $BookID, PDO::PARAM_INT);
         $stmt->bindParam(2, $Rating, PDO::PARAM_INT);
         $stmt->bindParam(3, $ReviewText, PDO::PARAM_STR);
+        $stmt->bindParam(4, $id, PDO::PARAM_INT);
 
         $stmt->execute();
 
