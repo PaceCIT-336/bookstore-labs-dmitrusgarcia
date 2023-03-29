@@ -39,7 +39,7 @@ echo "<div class=\"row summary\"><div class=\"cell\">Tax (4%):</div><div class=\
 // thank the user for their purchase
 $name = "Dmitrus";
         if ($price > 0) {
-            echo "<p>Thank you for your purchase, $name!</p>";
+            echo "<a href=\"validatePayment.php\"><button>Pay with Credit Card</button></a>";
         } else {
             echo "<p>You seem to be here by accident. Please visit our <a href='index.php'>Shop</a> to make a purchase.</p>";
         }
