@@ -14,7 +14,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } else {
         $book_title = $_POST['title'];
         $price = floatval($_POST['price']);
+        // Get the product index from the hidden input
+        $index = $_POST['index'];
         addToCart($book_title, $price);
+
+        // Set a cookie with the product index
+        setcookie('productIndex', $index, time()+3600);
     }
 }
 

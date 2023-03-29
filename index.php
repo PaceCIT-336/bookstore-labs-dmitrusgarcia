@@ -6,6 +6,8 @@
     <title>Rainy Bookstore</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="assets/styles.css">
+    <link rel="stylesheet" type="text/css" href="assets/carousel.css">
+    <script src="assets/carousel.js" defer></script>
     <?php session_start();
     include_once("cart.php"); 
     include_once("books.php"); ?>
@@ -25,10 +27,14 @@
     </header>
     
     <main class="container shop">
-        <div class="container">
+        <div class="review">
+        <button class="prev" onclick="previousReview()">PREV</button>
+        <button class="next" onclick="nextReview()">NEXT</button>
         <?php
+            $counter = 0; // Initialize the counter to 0
             foreach ($books as $id => $book) {
                 echo '<section class="tile">';
+                echo '<section class="review__items">';
                 echo '<img src="' . $book->imageLocation . '" alt="' . $book->title . '">';
                 echo '<h3>' . $book->title . '</h3>';
                 echo '<p>' . $book->author . '<br>' . $book->blurb . '</p>';
@@ -36,11 +42,14 @@
                 echo '<form name="phpbookform" id="phpbookform' . $id . '" action="" method="POST">';
                 echo '<input type="hidden" name="title" value="' . $book->title . '">';
                 echo '<input type="hidden" name="price" value="' . $book->price . '">';
+                echo '<input type="hidden" name="index" value="' . $counter . '">'; // Add a new hidden input with the counter value
                 echo '<button type="submit">Add to Cart</button>';
                 echo '</form>';
                 echo '<br><a href="book_reviews.php?id=' . $id . '"><button>See Reviews</button></a>';
                 echo '</section>';
-            }    
+                echo '</section>';
+                $counter++; // Increment the counter at the end of each loop
+            }
         ?>
 
     </div>
