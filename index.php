@@ -7,7 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="assets/styles.css">
     <link rel="stylesheet" type="text/css" href="assets/carousel.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="assets/carousel.js" defer></script>
+    <script src="assets/filter.js" defer></script>
     <?php session_start();
     include_once("cart.php"); 
     include_once("books.php"); ?>
@@ -30,6 +32,12 @@
         <div class="review">
         <button class="prev" onclick="previousReview()">PREV</button>
         <button class="next" onclick="nextReview()">NEXT</button>
+
+        <form name="filterform" id="filterform">
+            <input type="text" name="filter" placeholder="Search...">
+            <button type="submit" name="search"><i class="fa fa-search"></i></button>
+        </form>
+
         <?php
             $counter = 0; // Initialize the counter to 0
             foreach ($books as $id => $book) {

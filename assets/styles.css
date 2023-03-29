@@ -1,3 +1,24 @@
+#filterform {
+	display: flex;
+	align-items: center;
+	margin-top: 1em;
+	margin-bottom: 1em;
+}
+
+#filterform input[type="text"] {
+	flex: 1;
+	padding: 0.5em;
+	border: 1px solid #ccc;
+	border-radius: 0.25em;
+}
+
+#filterform button {
+	padding: 0.5em;
+	border: none;
+	background-color: #333;
+	color: #fff;
+}
+
 header {
     text-align: center;
 }
